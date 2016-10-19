@@ -54,4 +54,4 @@ for k in rave_columns:
     planets_tgas["rave_" + k] = np.nan
     planets_tgas.loc[planets_tgas.iloc[m2].index, "rave_" + k] = rave_cat[k][m1]
 
-planets_tgas.to_hdf("exoplanets_tgas.h5", "exoplanets_tgas", format="table")
+planets_tgas.to_hdf("exoplanets_tgas.h5", "exoplanets_tgas", format="f")
