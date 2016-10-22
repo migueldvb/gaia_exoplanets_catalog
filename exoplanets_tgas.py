@@ -26,7 +26,7 @@ xmatch_kwargs = {"lamost": { "colRA1" : "ra_obs", "colDec1" : "dec_obs",
 lamost_cat= gload.lamost(cat='star')
 # Dictionary unpacking syntax only works on python 3.5
 m1, m2, dist = xmatch(lamost_cat, planets_tgas.to_records(),
-                      **{**xmatch_kwargs['lamost'], **xmatch_kwargs['tgas']})
+                      dict(xmatch_kwargs['lamost'], xmatch_kwargs['tgas']))
 
 
 # Add lamost columns to planets_tga dataframe
@@ -47,7 +47,7 @@ data = pd.read_csv(rave_data, nrows=1)
 cols = np.where(data.columns.isin(rave_columns))[0]
 rave_cat = gload.rave(usecols=cols)
 m1, m2, dist = xmatch(rave_cat, planets_tgas.to_records(),
-                      **{**xmatch_kwargs['rave'], **xmatch_kwargs['tgas']})
+                      dict(xmatch_kwargs['rave'], xmatch_kwargs['tgas']))
 
 # Add rave columns to planets_tga dataframe
 for k in rave_columns:
